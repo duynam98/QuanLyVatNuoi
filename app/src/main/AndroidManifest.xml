@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.quanlyvatnuoi.admin.quanlyvatnuoi">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,13 +11,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".ui.ManhinhchaoActivity"
+            android:theme="@style/splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.HomeActivity" />
+        <activity
+            android:name=".ui.ListVatNuoiActivity"
+            android:parentActivityName=".ui.HomeActivity" />
+        <activity android:name=".ui.ThemVatNuoiActivity"
+            android:parentActivityName=".ui.ListVatNuoiActivity"/>
+        <activity android:name=".ui.ChiTietVatNuoiActivity"
+            android:parentActivityName=".ui.ListVatNuoiActivity"/>
+        <activity android:name=".ui.ThemGhiChuActivity"
+            android:parentActivityName=".ui.ListGhiChuActivity"/>
+        <activity android:name=".ui.SuaVatNuoiActivity"
+            android:parentActivityName=".ui.ListVatNuoiActivity"/>
+        <activity android:name=".ui.SuaGhiChuActivity"
+            android:parentActivityName=".ui.ListGhiChuActivity"/>
+        <activity android:name=".ui.ListGhiChuActivity"
+            android:parentActivityName=".ui.HomeActivity"/>
+        <activity android:name=".ui.ThongTinActivity" />
+        <activity android:name=".ui.WebActivity" />
     </application>
 
 </manifest>

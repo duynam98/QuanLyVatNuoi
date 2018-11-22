@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">QuanLyVatNuoi</string>
+    <string name="addname">Tên vật nuôi</string>
+    <string name="addsuckhoe">Tình trạng sức khỏe</string>
+    <string name="addtypefood">Loại thức ăn</string>
+    <string name="addtime">Thời gian nuôi</string>
+    <string name="addsoluong">Số lượng</string>
+    <string name="addtitle">Tiêu đề</string>
+    <string name="addnoidung">Nội dung</string>
 </resources>
