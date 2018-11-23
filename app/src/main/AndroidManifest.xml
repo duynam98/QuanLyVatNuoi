@@ -24,20 +24,31 @@
         <activity
             android:name=".ui.ListVatNuoiActivity"
             android:parentActivityName=".ui.HomeActivity" />
-        <activity android:name=".ui.ThemVatNuoiActivity"
-            android:parentActivityName=".ui.ListVatNuoiActivity"/>
-        <activity android:name=".ui.ChiTietVatNuoiActivity"
-            android:parentActivityName=".ui.ListVatNuoiActivity"/>
-        <activity android:name=".ui.ThemGhiChuActivity"
-            android:parentActivityName=".ui.ListGhiChuActivity"/>
-        <activity android:name=".ui.SuaVatNuoiActivity"
-            android:parentActivityName=".ui.ListVatNuoiActivity"/>
-        <activity android:name=".ui.SuaGhiChuActivity"
-            android:parentActivityName=".ui.ListGhiChuActivity"/>
-        <activity android:name=".ui.ListGhiChuActivity"
-            android:parentActivityName=".ui.HomeActivity"/>
+        <activity
+            android:name=".ui.ThemVatNuoiActivity"
+            android:parentActivityName=".ui.ListVatNuoiActivity" />
+        <activity
+            android:name=".ui.ChiTietVatNuoiActivity"
+            android:parentActivityName=".ui.ListVatNuoiActivity" />
+        <activity
+            android:name=".ui.ThemGhiChuActivity"
+            android:parentActivityName=".ui.ListGhiChuActivity" />
+        <activity
+            android:name=".ui.SuaVatNuoiActivity"
+            android:parentActivityName=".ui.ListVatNuoiActivity" />
+        <activity
+            android:name=".ui.SuaGhiChuActivity"
+            android:parentActivityName=".ui.ListGhiChuActivity" />
+        <activity
+            android:name=".ui.ListGhiChuActivity"
+            android:parentActivityName=".ui.HomeActivity" />
         <activity android:name=".ui.ThongTinActivity" />
         <activity android:name=".ui.WebActivity" />
+        <activity
+            android:name=".ui.LoginActivity"
+            android:theme="@style/splash" />
+        <activity android:name=".ui.ThemNguoiDungActivity" />
+        <activity android:name=".ui.ListUserActivity" />
     </application>
 
 </manifest>

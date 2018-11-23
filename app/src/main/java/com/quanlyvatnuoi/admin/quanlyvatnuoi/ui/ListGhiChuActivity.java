@@ -11,5 +11,6 @@ public class ListGhiChuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_ghi_chu);
+        setTitle("Ghi chú");
     }
 }

@@ -22,7 +22,7 @@ public class ManhinhchaoActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 finish();
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
             }
         }.start();
     }

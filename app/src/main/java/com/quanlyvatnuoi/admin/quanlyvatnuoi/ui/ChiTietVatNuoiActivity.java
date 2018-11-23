@@ -42,11 +42,15 @@ public class ChiTietVatNuoiActivity extends AppCompatActivity {
         tvLoaithucan.setText(intent.getStringExtra("typefood"));
         tvThoigiannuoi.setText(intent.getStringExtra("time"));
         tvSoluong.setText(intent.getStringExtra("soluong"));
-        imgAvatar.setImageURI(Uri.parse(intent.getStringExtra("image")));
+        if (Uri.parse(intent.getStringExtra("image"))==null){
+//            imgAvatar.setImageDrawable();
+        }else {
+            imgAvatar.setImageURI(Uri.parse(intent.getStringExtra("image")));
+        }
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent a  =new Intent(ChiTietVatNuoiActivity.this, SuaVatNuoiActivity.class);
+                Intent a = new Intent(ChiTietVatNuoiActivity.this, SuaVatNuoiActivity.class);
                 a.putExtra("name", tvName.getText());
                 a.putExtra("suckhoe", tvTinhtrang.getText());
                 a.putExtra("typefood", tvLoaithucan.getText());

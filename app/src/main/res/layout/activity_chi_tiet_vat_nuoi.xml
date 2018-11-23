@@ -57,7 +57,8 @@
                 android:id="@+id/tv_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_anchor="@id/btn_edit" />
+                app:layout_anchor="@id/btn_edit"
+                android:textSize="20sp"/>
 
             <TextView
                 android:id="@+id/tv_tinhtrang"

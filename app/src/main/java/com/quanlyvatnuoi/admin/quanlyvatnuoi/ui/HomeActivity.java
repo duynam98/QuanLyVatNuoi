@@ -13,7 +13,7 @@ public class HomeActivity extends AppCompatActivity {
     private ImageView imgQlvatnuoi;
     private ImageView imgThongtin;
     private ImageView imgNote;
-    private ImageView imgExit;
+    private ImageView imgUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +29,26 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        imgUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ListUserActivity.class));
+            }
+        });
+
+        imgNote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ListGhiChuActivity.class));
+            }
+        });
     }
 
     private void initView() {
         imgQlvatnuoi = (ImageView) findViewById(R.id.img_qlvatnuoi);
         imgThongtin = (ImageView) findViewById(R.id.img_thongtin);
         imgNote = (ImageView) findViewById(R.id.img_note);
-        imgExit = (ImageView) findViewById(R.id.img_exit);
+        imgUser = (ImageView) findViewById(R.id.img_user);
     }
 }
