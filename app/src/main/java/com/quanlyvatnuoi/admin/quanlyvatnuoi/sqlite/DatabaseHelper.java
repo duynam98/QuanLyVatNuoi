@@ -15,7 +15,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constant {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(CREATE_FOOD_TABLE);
+        db.execSQL(CREATE_VATNUOI_TABLE);
         db.execSQL(CREATE_USER_TABLE);
     }
 

@@ -11,7 +11,7 @@ public interface Constant {
     String COLUMN_SOLUONG = "SoLuong";
     String COLUMN_IMAGE = "Image";
 
-    String CREATE_FOOD_TABLE = "CREATE TABLE " + TABLE_VATNUOI + "(" +
+    String CREATE_VATNUOI_TABLE = "CREATE TABLE " + TABLE_VATNUOI + "(" +
             COLUMN_NAME + " TEXT PRIMARY KEY," +
             COLUMN_TINHTRANG + " TEXT," +
             COLUMN_LOAITHUCAN + " TEXT," +
