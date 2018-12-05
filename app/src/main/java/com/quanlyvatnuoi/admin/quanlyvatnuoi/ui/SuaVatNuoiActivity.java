@@ -90,6 +90,13 @@ public class SuaVatNuoiActivity extends AppCompatActivity {
                 Toast.makeText(SuaVatNuoiActivity.this, "Sửa thành công", Toast.LENGTH_SHORT).show();
             }
         });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
 

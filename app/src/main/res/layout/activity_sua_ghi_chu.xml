@@ -31,7 +31,9 @@
                 android:id="@+id/edt_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/addtitle" />
+                android:hint="@string/addtitle"
+                android:nextFocusDown="@id/edt_noidung"
+                android:inputType="text"/>
 
         </android.support.design.widget.TextInputLayout>
 
@@ -44,7 +46,9 @@
                 android:id="@+id/edt_noidung"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/addnoidung" />
+                android:hint="@string/addnoidung"
+                android:nextFocusDown="@id/edt_time"
+                android:inputType="text"/>
 
         </android.support.design.widget.TextInputLayout>
 
@@ -57,7 +61,8 @@
                 android:id="@+id/edt_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Thời gian" />
+                android:hint="Thời gian"
+                android:inputType="text"/>
 
         </android.support.design.widget.TextInputLayout>
 

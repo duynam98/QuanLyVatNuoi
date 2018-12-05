@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -34,6 +35,7 @@ public class SuaGhiChuActivity extends AppCompatActivity {
         initView();
         databaseHelper = new DatabaseHelper(this);
         dao = new GhiChuDAO(databaseHelper);
+        edtTime.setImeOptions(EditorInfo.IME_ACTION_DONE);
 
         final Intent intent = getIntent();
         edtTitle.setText(intent.getStringExtra("tieude"));
@@ -50,6 +52,21 @@ public class SuaGhiChuActivity extends AppCompatActivity {
                 ghichu.setThoigian(edtTime.getText().toString());
                 dao.updateNote(ghichu);
                 Toast.makeText(SuaGhiChuActivity.this, "Cập nhập ghi chú thành công", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), ListGhiChuActivity.class));
+            }
+        });
+
+        btnShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ListGhiChuActivity.class));
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

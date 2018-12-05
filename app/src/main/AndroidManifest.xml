@@ -53,9 +53,6 @@
         <activity
             android:name=".ui.ListUserActivity"
             android:parentActivityName=".ui.HomeActivity" />
-        <activity
-            android:name=".ui.ChiTietGhiChuActivity"
-            android:parentActivityName=".ui.ListGhiChuActivity"/>
     </application>
 
 </manifest>

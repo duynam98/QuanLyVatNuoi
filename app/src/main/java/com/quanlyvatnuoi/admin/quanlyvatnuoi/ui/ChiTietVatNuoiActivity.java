@@ -39,7 +39,7 @@ public class ChiTietVatNuoiActivity extends AppCompatActivity {
         final Intent intent = getIntent();
         String image = getIntent().getExtras().getString("image");
         if (image==null){
-            imgAvatar.setImageDrawable(getResources().getDrawable(R.drawable.untitled1));
+            imgAvatar.setImageDrawable(getResources().getDrawable(R.drawable.background));
         }else{
             imgAvatar.setImageURI(Uri.parse(intent.getStringExtra("image")));
         }

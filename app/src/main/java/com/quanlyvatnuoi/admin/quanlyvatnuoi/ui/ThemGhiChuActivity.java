@@ -61,7 +61,9 @@ public class ThemGhiChuActivity extends AppCompatActivity {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                edtTitle.setText("");
+                edtNoidung.setText("");
+                edtTime.setText("");
             }
         });
     }

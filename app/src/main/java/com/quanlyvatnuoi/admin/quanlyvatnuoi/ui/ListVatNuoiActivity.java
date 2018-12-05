@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.quanlyvatnuoi.admin.quanlyvatnuoi.R;
 import com.quanlyvatnuoi.admin.quanlyvatnuoi.adapter.VatNuoiAdapter;
@@ -46,6 +47,7 @@ public class ListVatNuoiActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), ThemVatNuoiActivity.class));
+                Toast.makeText(ListVatNuoiActivity.this, "Nhấn vào ảnh để chọn", Toast.LENGTH_SHORT).show();
             }
         });
 

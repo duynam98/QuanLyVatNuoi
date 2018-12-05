@@ -58,7 +58,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_anchor="@id/btn_edit"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                android:text="Tên vật nuôi: "/>
 
             <TextView
                 android:id="@+id/tv_tinhtrang"

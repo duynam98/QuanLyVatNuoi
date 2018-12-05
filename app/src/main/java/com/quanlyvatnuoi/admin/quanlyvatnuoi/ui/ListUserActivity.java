@@ -36,6 +36,7 @@ public class ListUserActivity extends AppCompatActivity {
     private EditText edtUpdateName;
     private EditText edtUpdatePhone;
     private Button btnUpdate;
+    private Button btnCancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +68,14 @@ public class ListUserActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 final Dialog dialog = new Dialog(ListUserActivity.this);
+
+//                Bundle bundle = new Bundle();
+//                bundle.putString("username", userList.get(position).getUserName());
+//                bundle.putString("pass", userList.get(position).getPassword());
+//                bundle.putString("name", userList.get(position).getName());
+//                bundle.putString("phone", userList.get(position).getPhone());
+
+
                 dialog.setContentView(R.layout.dialog_updateuser);
                 dialog.setTitle("Cập Nhập Thông Tin");
                 dialog.show();
@@ -75,6 +84,15 @@ public class ListUserActivity extends AppCompatActivity {
                 edtUpdateName = dialog.findViewById(R.id.edt_updateName);
                 edtUpdatePhone = dialog.findViewById(R.id.edt_updatePhone);
                 btnUpdate = dialog.findViewById(R.id.btn_update);
+                btnCancel = dialog.findViewById(R.id.btn_cancel);
+
+
+                edtUpdateUsername.setText(userList.get(position).getUserName());
+                edtUpdateUsername.setEnabled(false);
+                edtUpdatePass.setText(userList.get(position).getPassword());
+                edtUpdateName.setText(userList.get(position).getName());
+                edtUpdatePhone.setText(userList.get(position).getPhone());
+
                 btnUpdate.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -89,6 +107,13 @@ public class ListUserActivity extends AppCompatActivity {
                         userList.clear();
                         userList.addAll(dao.getAllUsers());
                         adapter.notifyDataSetChanged();
+                    }
+                });
+
+                btnCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
                     }
                 });
             }
