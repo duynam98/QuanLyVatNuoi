@@ -10,6 +10,7 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -46,6 +47,8 @@ public class ThemVatNuoiActivity extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(this);
         dao = new VatNuoiDAO(databaseHelper);
 
+        edtSoluong.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
         btnShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,16 +72,30 @@ public class ThemVatNuoiActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = edtName.getText().toString();
+                String name = edtName.getText().toString().trim();
+                VatNuoi vatNuoi = dao.getVatNuoi(name);
                 String suckhoe = edtSuckhoe.getText().toString();
                 String typefood = edtTypefood.getText().toString();
                 String time = edtTime.getText().toString();
                 String soluong = edtSoluong.getText().toString();
                 if (name.isEmpty() || suckhoe.isEmpty() || typefood.isEmpty() || time.isEmpty() || soluong.isEmpty()) {
                     Toast.makeText(ThemVatNuoiActivity.this, "Không được để trống các trường thông tin", Toast.LENGTH_SHORT).show();
-                } else {
+                } else if (vatNuoi==null){
                     themvatnuoi();
+                }else {
+                    Toast.makeText(ThemVatNuoiActivity.this, "Tên vật nuôi không được trùng", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edtName.setText("");
+                edtSuckhoe.setText("");
+                edtTypefood.setText("");
+                edtTime.setText("");
+                edtSoluong.setText("");
             }
         });
     }
@@ -92,7 +109,7 @@ public class ThemVatNuoiActivity extends AppCompatActivity {
         edtSoluong = findViewById(R.id.edt_soluong);
         btnAdd = findViewById(R.id.btn_add);
         btnCancel = findViewById(R.id.btn_cancel);
-        btnShow = (Button) findViewById(R.id.btn_show);
+        btnShow = findViewById(R.id.btn_show);
     }
 
 
@@ -126,6 +143,9 @@ public class ThemVatNuoiActivity extends AppCompatActivity {
                     Uri selectImage = data.getData();
                     image = String.valueOf(selectImage);
                     imgAvatar.setImageURI(selectImage);
+                    if (imgAvatar==null){
+                        Toast.makeText(this, "Chọn ảnh", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 break;
         }

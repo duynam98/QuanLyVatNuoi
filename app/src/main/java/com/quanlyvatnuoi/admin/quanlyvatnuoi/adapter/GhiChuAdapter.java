@@ -1,7 +1,6 @@
 package com.quanlyvatnuoi.admin.quanlyvatnuoi.adapter;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
@@ -12,33 +11,35 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.quanlyvatnuoi.admin.quanlyvatnuoi.R;
-import com.quanlyvatnuoi.admin.quanlyvatnuoi.dao.UserDao;
-import com.quanlyvatnuoi.admin.quanlyvatnuoi.dao.VatNuoiDAO;
-import com.quanlyvatnuoi.admin.quanlyvatnuoi.model.User;
+import com.quanlyvatnuoi.admin.quanlyvatnuoi.dao.GhiChuDAO;
+import com.quanlyvatnuoi.admin.quanlyvatnuoi.model.Ghichu;
 import com.quanlyvatnuoi.admin.quanlyvatnuoi.sqlite.DatabaseHelper;
 
 import java.util.List;
 
-public class UserAdapter extends BaseAdapter {
-    private List<User> userList;
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class GhiChuAdapter extends BaseAdapter {
+
     private Context context;
+    private List<Ghichu> ghichuList;
     private DatabaseHelper databaseHelper;
-    private UserDao dao;
+    private GhiChuDAO dao;
 
-    public UserAdapter(List<User> userList, Context context) {
-        this.userList = userList;
+    public GhiChuAdapter(Context context, List<Ghichu> ghichuList) {
         this.context = context;
+        this.ghichuList = ghichuList;
     }
-
 
     @Override
     public int getCount() {
-        return userList.size();
+        if (ghichuList == null) return 0;
+        return ghichuList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return userList.get(position);
+        return ghichuList.get(position);
     }
 
     @Override
@@ -48,21 +49,19 @@ public class UserAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        databaseHelper = new DatabaseHelper(context);
         ViewHolder viewHolder = new ViewHolder();
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_user, parent, false);
-            viewHolder.tvname = convertView.findViewById(R.id.tvname);
-            viewHolder.tvphone = convertView.findViewById(R.id.tvphone);
-            viewHolder.img_delete = convertView.findViewById(R.id.img_delete);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_ghichu, parent, false);
+            viewHolder.imgAvatar = convertView.findViewById(R.id.img_avatar);
+            viewHolder.tvtitle = convertView.findViewById(R.id.tvtitle);
+            viewHolder.imgDelete = convertView.findViewById(R.id.img_delete);
+            viewHolder.tvSTT = convertView.findViewById(R.id.tv_stt);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-
-        viewHolder.tvphone.setText("Phone:  " + userList.get(position).getPhone());
-        viewHolder.tvname.setText("UserName:  " + userList.get(position).getUserName());
-        viewHolder.img_delete.setOnClickListener(new View.OnClickListener() {
+        viewHolder.tvtitle.setText("Tiêu đề: " + ghichuList.get(position).getTieude());
+        viewHolder.imgDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -73,9 +72,9 @@ public class UserAdapter extends BaseAdapter {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         databaseHelper = new DatabaseHelper(context);
-                        dao = new UserDao(databaseHelper);
-                        dao.deleteUser(userList.get(position));
-                        userList.remove(position);
+                        dao = new GhiChuDAO(databaseHelper);
+                        dao.deleteNote(ghichuList.get(position));
+                        ghichuList.remove(position);
                         notifyDataSetChanged();
                         dialog.dismiss();
                     }
@@ -94,8 +93,9 @@ public class UserAdapter extends BaseAdapter {
     }
 
     class ViewHolder {
-        private TextView tvname;
-        private TextView tvphone;
-        private ImageView img_delete;
+        CircleImageView imgAvatar;
+        TextView tvtitle;
+        ImageView imgDelete;
+        TextView tvSTT;
     }
 }

@@ -34,6 +34,18 @@ public interface Constant {
             COLUMN_PHONENUMBER + " VARCHAR" +
             ")";
 
+    //Table ghi chú
+    String NOTE_TABLE = "note";
+    String COLUMN_ID = "id";
+    String COLUMN_TITLE = "tieude";
+    String COLUMN_NOIDUNG = "noidung";
+    String COLUMN_TIME = "thoigian";
 
+    String CREATE_NOTE_TABLE = "CREATE TABLE " + NOTE_TABLE + "(" +
+            COLUMN_ID + " INTEGER PRIMARY KEY," +
+            COLUMN_TITLE + " TEXT," +
+            COLUMN_NOIDUNG + " TEXT," +
+            COLUMN_TIME + " TEXT" +
+            ")";
 
 }

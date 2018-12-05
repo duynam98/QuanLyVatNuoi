@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -24,6 +25,7 @@ public class ThemNguoiDungActivity extends AppCompatActivity {
     private Button btnListUser;
     private DatabaseHelper databaseHelper;
     private UserDao dao;
+    private Button btnCancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +38,20 @@ public class ThemNguoiDungActivity extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(this);
         dao = new UserDao(databaseHelper);
 
+        edtAddPhone.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
         btnAdduser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                User user = new User(edtAddUserName.getText().toString(), edtAddPassWord.getText().toString(), edtAddName.getText().toString(), edtAddPhone.getText().toString());
-                dao.insertUser(user);
-                Toast.makeText(ThemNguoiDungActivity.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                String username = edtAddUserName.getText().toString().trim();
+                User user1 = dao.getUser(username);
+                if (user1 == null) {
+                    User user = new User(edtAddUserName.getText().toString(), edtAddPassWord.getText().toString(), edtAddName.getText().toString(), edtAddPhone.getText().toString());
+                    dao.insertUser(user);
+                    Toast.makeText(ThemNguoiDungActivity.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(ThemNguoiDungActivity.this, "Username không được trùng", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -49,6 +59,16 @@ public class ThemNguoiDungActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), ListUserActivity.class));
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edtAddUserName.setText("");
+                edtAddPassWord.setText("");
+                edtAddName.setText("");
+                edtAddPhone.setText("");
             }
         });
     }
@@ -60,5 +80,6 @@ public class ThemNguoiDungActivity extends AppCompatActivity {
         edtAddPhone = findViewById(R.id.edt_addPhone);
         btnAdduser = findViewById(R.id.btn_adduser);
         btnListUser = findViewById(R.id.btn_listUser);
+        btnCancel = findViewById(R.id.btn_cancel);
     }
 }

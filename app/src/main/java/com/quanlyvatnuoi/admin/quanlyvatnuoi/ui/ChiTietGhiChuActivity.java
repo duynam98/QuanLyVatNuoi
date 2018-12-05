@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import com.quanlyvatnuoi.admin.quanlyvatnuoi.R;
 
-public class ThongTinActivity extends AppCompatActivity {
+public class ChiTietGhiChuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_thong_tin);
+        setContentView(R.layout.activity_chi_tiet_ghi_chu);
     }
 }

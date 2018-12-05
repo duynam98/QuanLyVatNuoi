@@ -17,12 +17,14 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constant {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_VATNUOI_TABLE);
         db.execSQL(CREATE_USER_TABLE);
+        db.execSQL(CREATE_NOTE_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_VATNUOI );
         db.execSQL("DROP TABLE IF EXISTS " + USER_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + NOTE_TABLE);
         onCreate(db);
     }
 }

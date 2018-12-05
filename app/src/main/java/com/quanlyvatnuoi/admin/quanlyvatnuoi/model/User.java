@@ -11,6 +11,8 @@ public class User {
         this.phone = phone;
     }
 
+    public User() {
+    }
 
     public String getUserName() {
         return UserName;

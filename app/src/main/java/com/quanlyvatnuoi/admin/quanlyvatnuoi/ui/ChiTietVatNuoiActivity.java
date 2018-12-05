@@ -37,16 +37,17 @@ public class ChiTietVatNuoiActivity extends AppCompatActivity {
         setTitle("Chi Tiết Vật Nuôi");
 
         final Intent intent = getIntent();
+        String image = getIntent().getExtras().getString("image");
+        if (image==null){
+            imgAvatar.setImageDrawable(getResources().getDrawable(R.drawable.untitled1));
+        }else{
+            imgAvatar.setImageURI(Uri.parse(intent.getStringExtra("image")));
+        }
         tvName.setText(intent.getStringExtra("name"));
         tvTinhtrang.setText(intent.getStringExtra("suckhoe"));
         tvLoaithucan.setText(intent.getStringExtra("typefood"));
         tvThoigiannuoi.setText(intent.getStringExtra("time"));
         tvSoluong.setText(intent.getStringExtra("soluong"));
-        if (Uri.parse(intent.getStringExtra("image"))==null){
-//            imgAvatar.setImageDrawable();
-        }else {
-            imgAvatar.setImageURI(Uri.parse(intent.getStringExtra("image")));
-        }
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

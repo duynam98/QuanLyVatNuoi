@@ -55,6 +55,26 @@ public class VatNuoiDAO implements Constant {
         return vatNuoiList;
     }
 
+    public VatNuoi getVatNuoi(String vatnuoi) {
+        VatNuoi vatNuoi = null;
+        SQLiteDatabase db = databaseHelper.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_VATNUOI, new String[]{COLUMN_NAME, COLUMN_TINHTRANG, COLUMN_LOAITHUCAN, COLUMN_THOIGIAN, COLUMN_SOLUONG, COLUMN_IMAGE},
+                COLUMN_NAME + "=?",
+                new String[]{vatnuoi},
+                null, null, null, null);
+        if (cursor != null && cursor.moveToFirst()){
+            String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
+            String tinhtrang = cursor.getString(cursor.getColumnIndex(COLUMN_TINHTRANG));
+            String loaithucan = cursor.getString(cursor.getColumnIndex(COLUMN_LOAITHUCAN));
+            String thoigian = cursor.getString(cursor.getColumnIndex(COLUMN_THOIGIAN));
+            int soluong = Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_SOLUONG)));
+            String image = cursor.getString(cursor.getColumnIndex(COLUMN_IMAGE));
+            vatNuoi = new VatNuoi(name, tinhtrang, loaithucan, thoigian, soluong, image);
+        }
+        cursor.close();
+        return vatNuoi;
+    }
+
     public void delete(VatNuoi vatNuoi){
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
         db.delete(TABLE_VATNUOI, COLUMN_NAME + "=?", new String[]{vatNuoi.getTenvatnuoi()});

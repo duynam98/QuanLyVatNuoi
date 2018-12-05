@@ -3,6 +3,7 @@
     package="com.quanlyvatnuoi.admin.quanlyvatnuoi">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -42,13 +43,19 @@
         <activity
             android:name=".ui.ListGhiChuActivity"
             android:parentActivityName=".ui.HomeActivity" />
-        <activity android:name=".ui.ThongTinActivity" />
         <activity android:name=".ui.WebActivity" />
         <activity
             android:name=".ui.LoginActivity"
             android:theme="@style/splash" />
-        <activity android:name=".ui.ThemNguoiDungActivity" />
-        <activity android:name=".ui.ListUserActivity" />
+        <activity
+            android:name=".ui.ThemNguoiDungActivity"
+            android:parentActivityName=".ui.ListUserActivity" />
+        <activity
+            android:name=".ui.ListUserActivity"
+            android:parentActivityName=".ui.HomeActivity" />
+        <activity
+            android:name=".ui.ChiTietGhiChuActivity"
+            android:parentActivityName=".ui.ListGhiChuActivity"/>
     </application>
 
 </manifest>
